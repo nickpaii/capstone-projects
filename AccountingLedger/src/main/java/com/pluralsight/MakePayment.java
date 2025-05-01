@@ -30,7 +30,7 @@ public class MakePayment {
         String date = LocalDate.now().toString();
         String time = LocalTime.now().withNano(0).toString();
 
-        String transaction = String.join("\\|", date, time, description, vendor + "| -" + amount);
+        String transaction = String.join(",", date, time, description, vendor + "| -" + amount);
 
         try (FileWriter writer = new FileWriter(tranFile, true)) {
             writer.write(transaction + "\n");

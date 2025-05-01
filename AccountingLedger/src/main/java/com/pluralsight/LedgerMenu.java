@@ -20,7 +20,7 @@ public class LedgerMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\|", 5);
+                String[] parts = line.split(",", 5);
                 if (parts.length == 5) {
                     transactions.add(parts);
                 }
@@ -39,11 +39,13 @@ public class LedgerMenu {
 
             try {
                 amount = Float.parseFloat(t[4]);
+
             } catch (NumberFormatException e) {
                 System.out.println("Invalid amount in transaction: " + String.join(" | ", t));
                 continue;
             }
 
+            // filter logic
             boolean show = filter.equalsIgnoreCase("ALL") ||
                     (filter.equalsIgnoreCase("DEPOSIT") && amount > 0) ||
                     (filter.equalsIgnoreCase("PAYMENT") && amount < 0);
