@@ -48,7 +48,41 @@ public class AccountingApp {
                     makePayment.makePayment();
                     break;
                 case 'L':
-                
+                    boolean ledgerRunning = true;
+                    while (ledgerRunning) {
+                        System.out.println("\n---Ledger Menu---");
+                        System.out.println("A) Show All Entries");
+                        System.out.println("D) Show Deposits");
+                        System.out.println("P) Show Payments");
+                        System.out.println("R) Show Reports");
+                        System.out.println("H) Return to Home Screen");
+                        System.out.print("Enter your choice: ");
+
+                        String ledgerChoice = scanner.nextLine();
+
+                        LedgerMenu ledger = new LedgerMenu(tranFile);
+
+                        switch (ledgerChoice.toUpperCase()) {
+                            case "A":
+                                ledger.displayTransactions("ALL");
+                                break;
+                            case "D":
+                                ledger.displayTransactions("DEPOSIT");
+                                break;
+                            case "P":
+                                ledger.displayTransactions("PAYMENT");
+                                break;
+                            case "R":
+                               
+                                break;
+                            case "H":
+                                ledgerRunning = false;
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                                break;
+                        }
+                    }
                     break;
                 case 'X':
                     System.out.println("Exiting the application. Goodbye!");
