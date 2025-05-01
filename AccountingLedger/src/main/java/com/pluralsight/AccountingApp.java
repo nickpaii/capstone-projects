@@ -1,5 +1,10 @@
 package com.pluralsight;
 
+import java.io.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class AccountingApp {
@@ -20,6 +25,9 @@ public class AccountingApp {
 
 
         boolean running = true; // controls the loop
+
+        String tranFile = "data/transactions.csv";
+
         while (running) {
             showMainMenu();
             String input = scanner.nextLine().trim();
@@ -32,13 +40,15 @@ public class AccountingApp {
 
             switch (choice) {               // switch cases for each menu option and default for incorrect inputs
                 case 'D':
-                    addDeposit(scanner);
+                    AddDeposit addDeposit = new AddDeposit(tranFile);
+                    addDeposit.addDeposit();
                     break;
                 case 'P':
-                    makePayment(scanner);
+                    MakePayment makePayment = new MakePayment(tranFile);
+                    makePayment.makePayment();
                     break;
                 case 'L':
-                    viewLedger();
+                
                     break;
                 case 'X':
                     System.out.println("Exiting the application. Goodbye!");
@@ -53,56 +63,13 @@ public class AccountingApp {
         scanner.close();
     }
 
-    public static void addDeposit(Scanner scanner) {
-        System.out.print("Enter deposit amount: ");
-        float amount = readFloat(scanner);
-
-        System.out.print("Enter deposit description: ");
-        String description = scanner.nextLine();
-
-        // save this info to transactions.csv
-        System.out.printf("Deposit of $%.2f with description: \"%s\" ", amount, description);
-    }
-
-    public static void makePayment(Scanner scanner) {
-
-        System.out.print("Enter payment amount: ");
-        float amount = readFloat(scanner);
-
-        System.out.print("Enter payment description: ");
-        String description = scanner.nextLine();
-
-        // save this info to transactions.csv
-        System.out.printf("Payment of $%.2f with description: \"%s\" ", amount, description);
-    }
-
-    public static void viewLedger() {
-        System.out.println("Displaying ledger.");
-    }
-
-    public static float readFloat(Scanner scanner) {
-        while (true) {
-            try {
-                String input = scanner.nextLine().trim();
-                return Float.parseFloat(input);
-            } catch (NumberFormatException e) {
-                System.out.print("Invalid number. Please enter a valid amount: ");
-            }
-        }
-    }
-
-    private static void promptReturnToMenu() {
-        System.out.println("\nPress Enter to return to the main menu...");
-        scanner.nextLine();
-    }
-
 
     public static void showMainMenu() {
-            System.out.println("\n---Home Screen---");
-            System.out.println("D) Add Deposit");
-            System.out.println("P) Make Payment (Debit)");
-            System.out.println("L) Ledger");
-            System.out.println("X) Exit");
-            System.out.print("Enter your choice: ");
+        System.out.println("\n---Home Screen---");
+        System.out.println("D) Add Deposit");
+        System.out.println("P) Make Payment (Debit)");
+        System.out.println("L) Ledger");
+        System.out.println("X) Exit");
+        System.out.print("Enter your choice: ");
     }
 }
