@@ -67,10 +67,10 @@ public class AccountingApp {
                                 ledger.displayTransactions("ALL");
                                 break;
                             case "D":
-                                ledger.displayTransactions("DEPOSITS");
+                                ledger.displayTransactions("DEPOSIT");
                                 break;
                             case "P":
-                                ledger.displayTransactions("PAYMENTS");
+                                ledger.displayTransactions("PAYMENT");
                                 break;
                             case "R":
                                 ReportsMenu.showReportsMenu(tranFile);

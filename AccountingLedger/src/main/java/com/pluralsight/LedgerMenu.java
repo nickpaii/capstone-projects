@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class LedgerMenu {
@@ -19,8 +20,10 @@ public class LedgerMenu {
         try (BufferedReader reader = new BufferedReader(new FileReader(tranFile))) {
             String line;
 
+            reader.readLine(); //skip header
+
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     transactions.add(parts);
                 }

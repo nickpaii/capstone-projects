@@ -71,7 +71,7 @@ public class ReportsMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     String dateString = parts[0].trim(); // format: yyyy-MM-dd
 
@@ -109,7 +109,7 @@ public class ReportsMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     String dateString = parts[0].trim(); // format: yyyy-MM-dd
 
@@ -146,7 +146,7 @@ public class ReportsMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     String dateString = parts[0].trim(); // format: yyyy-MM-dd
 
@@ -185,7 +185,7 @@ public class ReportsMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     String dateString = parts[0].trim(); // format: yyyy-MM-dd
 
@@ -228,7 +228,7 @@ public class ReportsMenu {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",", 5);
+                String[] parts = line.split("\\|", 5);
                 if (parts.length == 5) {
                     String vendor = parts[3].trim().toLowerCase();
                     if (vendor.contains(vendorSearch)) {
